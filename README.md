@@ -83,7 +83,11 @@ Data <- read.csv("statT.csv")
 
 install.packages("readxl")
 
-Data <- readxl::read_excel("statT.csv", sheet = 2)
+Data <- readxl::read_excel("OT_data_GC.xlsx", col_names = TRUE, sheet = 1)
+
+write.csv(Data, file = "Data.csv", row.names = FALSE)
+
+Data_csv <- read.csv("Data.csv", )
 ```
 
 # Datafile needs to follow the following format
