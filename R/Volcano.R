@@ -39,8 +39,10 @@ Volcano <- function(data,
                     max_overlap = 20,
                     FC_range = c(-1.5, 1.5),
                     sig_label = T,
-                    color = c("blue", "black", "red")) {
-  ifelse(!dir.exists(file.path(getwd(), "Volcano")), dir.create(file.path(getwd(), "Volcano")), FALSE)
+                    color = c("blue", "black", "red"),
+                    directory = getwd(),
+                    subdirectory = "Groupname") {
+  ifelse(!dir.exists(file.path(directory, "Volcano", subdirectory)), dir.create(file.path(directory, "Volcano", subdirectory)), FALSE)
   data[["Data_renamed"]] <-
     data[["Data_renamed"]] %>% plyr::mutate(ZZZZ = data[["Data_renamed"]][, 2])
   data[["Data_renamed"]] <- data[["Data_renamed"]][, c(-1, -2)]
@@ -238,7 +240,7 @@ Volcano <- function(data,
 
   ggplot2::ggsave(
     filename = paste(G1, "divided by", G2, "Volcano plot.png", collapse = ""),
-    path = paste0(getwd(), "/Volcano"),
+    path = paste0(directory, "/Volcano/", subdirectory),
     width = fig_width,
     height = fig_height
   )  }
