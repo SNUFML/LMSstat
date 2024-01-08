@@ -53,11 +53,13 @@ Boxplot <- function(data,
                     Y_text = 12,
                     Y_lab = 10,
                     T_size = 15,
-                    sig_int = c(0.05, 0.01)) {
+                    sig_int = c(0.05, 0.01),
+                    directory = getwd(),
+                    subdirectory = "Boxplot") {
   {
     # Summary
     ### Plot_data_prep###
-    ifelse(!dir.exists(file.path(getwd(), "boxplot")), dir.create(file.path(getwd(), "boxplot")), FALSE)
+    ifelse(!dir.exists(file.path(directory, subdirectory)), dir.create(file.path(directory, subdirectory)), FALSE)
     data[["Data_renamed"]] <-
       data[["Data_renamed"]] %>% plyr::mutate(ZZZZ = data[["Data_renamed"]][, 2])
     data[["Data_renamed"]] <- data[["Data_renamed"]][, c(-1, -2)]
@@ -221,7 +223,7 @@ Boxplot <- function(data,
             )
           ggplot2::ggsave(
             filename = paste(NAMES[number], "boxplot.png", collapse = ""),
-            path = paste0(getwd(), "/boxplot"),
+            path = paste0(directory, "/", subdirectory),
             width = fig_width,
             height = fig_height
           )
@@ -277,7 +279,7 @@ Boxplot <- function(data,
 
           ggplot2::ggsave(
             filename = paste(NAMES[number], "boxplot.png", collapse = ""),
-            path = paste0(getwd(), "/boxplot"),
+            path = paste0(directory, "/", subdirectory),
             width = fig_width,
             height = fig_height
           )
@@ -410,7 +412,7 @@ Boxplot <- function(data,
             )
           ggplot2::ggsave(
             filename = paste(NAMES[number], "boxplot.png", collapse = ""),
-            path = paste0(getwd(), "/boxplot"),
+            path = paste0(directory, "/", subdirectory),
             width = fig_width,
             height = fig_height
           )
@@ -466,7 +468,7 @@ Boxplot <- function(data,
 
           ggplot2::ggsave(
             filename = paste(NAMES[number], "boxplot.png", collapse = ""),
-            path = paste0(getwd(), "/boxplot"),
+            path = paste0(directory, "/", subdirectory),
             width = fig_width,
             height = fig_height
           )
